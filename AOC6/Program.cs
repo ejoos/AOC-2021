@@ -47,6 +47,9 @@ namespace AOC6
             Console.WriteLine(answer);
         }
 
+        /// <summary>
+        /// To slow :-(
+        /// </summary>
         private static void Part2()
         {
             var originalPopulation = new List<fish>();
