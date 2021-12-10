@@ -14,8 +14,7 @@ namespace AOC9
         }
 
         private static void Part1()
-        {
-            List<int> positions = new List<int>();
+        {            
             var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC9\1.txt").ToList();
             var map = Parse(lineData);
             int answer = Solve(map);
@@ -24,8 +23,7 @@ namespace AOC9
                 
         private static Dictionary<(int x, int y), int> Parse(List<string> lineData)
         {
-            var map = new Dictionary<(int x, int y), int>();
-            
+            var map = new Dictionary<(int x, int y), int>();            
             for (int y = 0; y < lineData.Count; y++)
             {                
                 var c = lineData[y].ToList();                
@@ -61,9 +59,8 @@ namespace AOC9
         {
             var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC9\1.txt").ToList();
 
-            Map map = new Map(lineData);
-            map.FindBasins();                      
-            var answer = map.GetSum();
+            Map map = new Map(lineData);            
+            var answer = map.GetTop3Sum();
             Console.WriteLine(answer);
         }               
 

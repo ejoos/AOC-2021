@@ -13,7 +13,6 @@ namespace AOC10
         internal bool IsIncomplete { get; private set; }
         internal long Cost { get; private set; }
 
-
         static Line()
         {
             _lefts = new Dictionary<char, int>()
