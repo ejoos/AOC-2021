@@ -64,28 +64,21 @@ namespace AOC10
             if (i == chars.Count && checkedChars.Count > 0)
             {
                 IsIncomplete = true;
-                Cost = GetCompleteCost(checkedChars);                
+                Cost = GetCompletionCost(checkedChars);                
             }            
         }
 
         internal static long GetMiddleCompletionCost(List<Line> lines)
         {
-            var costs = new List<long>();
-            foreach (var l in lines.Where(l => l.IsIncomplete))
-            {
-                costs.Add(l.Cost);
-            }
-            costs.Sort();
-            return costs[costs.Count / 2];
+            return lines.OrderBy(l => l.Cost).ToList()[lines.Count / 2].Cost;
         }
 
-        private static long GetCompleteCost(List<char> checkedChars)
+        private static long GetCompletionCost(List<char> checkedChars)
         {
             long cost = 0;
-            checkedChars.Reverse();
-            foreach (var c in checkedChars)
+            for (int i = checkedChars.Count - 1; i >= 0; i--)
             {
-                cost = cost * 5 + GetCostLeft(c);
+                cost = cost * 5 + GetCostLeft(checkedChars[i]);
             }
             return cost;
         }
