@@ -15,16 +15,16 @@ namespace AOC11
         private static void Part1()
         {
             var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC11\1.txt").ToList();            
-            var map = new Map(lineData);
-            map.Solve(1, 100);
+            var map = new Map();
+            map.Solve(lineData, 1, 100);
             Console.WriteLine(map.NoOfFlashes);
         }
 
         private static void Part2()
         {
             var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC11\1.txt").ToList();            
-            var map = new Map(lineData);
-            map.Solve(2);
+            var map = new Map();
+            map.Solve(lineData, 2);
             Console.WriteLine(map.FirstSyncFlash);
         }
 

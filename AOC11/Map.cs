@@ -8,12 +8,15 @@ namespace AOC11
         private int _xmax;
         private int _ymax;        
         private Dictionary<(int x, int y), int> _octo = new();
-        internal int NoOfFlashes { get; private set; } = 0;
-        internal int FirstSyncFlash { get; private set; } = 0;
-
-        internal Map(List<string> lineData)
-        {            
-            Parse(lineData);            
+        internal int NoOfFlashes { get; private set; }
+        internal int FirstSyncFlash { get; private set; }
+       
+        internal void Solve(List<string> lineData, int part, int iterations = -1)
+        {
+            NoOfFlashes = 0;
+            FirstSyncFlash = 0;
+            Parse(lineData);
+            Iterate(part, iterations);
         }
 
         private void Parse(List<string> lineData)
@@ -28,11 +31,6 @@ namespace AOC11
             }
             _xmax = _octo.Last().Key.x;
             _ymax = _octo.Last().Key.y;
-        }
-
-        internal void Solve(int part, int iterations = -1)
-        {
-            Iterate(part, iterations);
         }
 
         private void Iterate(int part, int iterations)
@@ -58,7 +56,7 @@ namespace AOC11
 
         private void DoIteration(int n)
         {
-            int stepFlash = NoOfFlashes;
+            int flashesBeforeIteration = NoOfFlashes;
             var nines = new List<(int x, int y)>();
             for (int y = 0; y <= _ymax; y++)
             {
@@ -74,19 +72,16 @@ namespace AOC11
                     }
                 }
             }
-            FlashAdj(nines);            
-            if (NoOfFlashes - stepFlash == _octo.Count && FirstSyncFlash == 0)
-            {
-                FirstSyncFlash = n;
-            }
-        }
 
-        private void FlashAdj(List<(int x, int y)> nines)
-        {
             while (nines.Count > 0)
             {
                 IncAdj(nines[0], nines);
                 nines.RemoveAt(0);
+            }
+
+            if (NoOfFlashes - flashesBeforeIteration == _octo.Count)
+            {
+                FirstSyncFlash = n;
             }
         }
 
@@ -99,8 +94,8 @@ namespace AOC11
                 {
                     if (y < 0 || y > _ymax) continue;
                     if (_octo[(x, y)] == 9)
-                    {
-                        Flash((x, y), nines);                       
+                    {                        
+                        Flash((x, y), nines);
                     }
                     else if (_octo[(x, y)] > 0)
                     {
