@@ -62,13 +62,14 @@ namespace AOC11
             {
                 for (int x = 0; x <= _xmax; x++)
                 {
-                    if (_octo[(x, y)] == 9)
+                    var pos = (x, y);
+                    if (_octo[pos] == 9)
                     {
-                        Flash((x, y), nines);
+                        Flash(pos, nines);
                     }
                     else
                     {
-                        _octo[(x, y)]++;
+                        _octo[pos]++;
                     }
                 }
             }
@@ -85,21 +86,22 @@ namespace AOC11
             }
         }
 
-        private void IncAdj((int x, int y) pos, List<(int x, int y)> nines)
+        private void IncAdj((int x, int y) center, List<(int x, int y)> nines)
         {
-            for (int x = pos.x - 1; x <= pos.x + 1; x++)
+            for (int x = center.x - 1; x <= center.x + 1; x++)
             {
                 if (x < 0 || x > _xmax) continue;
-                for (int y = pos.y - 1; y <= pos.y + 1; y++)
+                for (int y = center.y - 1; y <= center.y + 1; y++)
                 {
                     if (y < 0 || y > _ymax) continue;
-                    if (_octo[(x, y)] == 9)
+                    var pos = (x, y);
+                    if (_octo[pos] == 9)
                     {                        
-                        Flash((x, y), nines);
+                        Flash(pos, nines);
                     }
-                    else if (_octo[(x, y)] > 0)
+                    else if (_octo[pos] > 0)
                     {
-                        _octo[(x, y)]++;
+                        _octo[pos]++;
                     }
                 }
             }
