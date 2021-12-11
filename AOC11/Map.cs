@@ -4,10 +4,14 @@ using System.Linq;
 namespace AOC11
 {
     internal class Map
-    {        
+    {
+        private const int ZeroEnergy = 0;
+        private const int ReadyToFlash = 9;
+
         private int _xmax;
-        private int _ymax;        
+        private int _ymax;
         private Dictionary<(int x, int y), int> _octo = new();
+        
         internal int NoOfFlashes { get; private set; }
         internal int FirstSyncFlash { get; private set; }
        
@@ -36,36 +40,25 @@ namespace AOC11
         private void Iterate(int part, int iterations)
         {
             int n = 0;
-            if (part == 1)
+            while (n < iterations && part == 1 || FirstSyncFlash == 0 && part == 2)
             {
-                while (n < iterations)
-                {
-                    DoIteration(n);
-                    n++;
-                }
-            }
-            else if (part == 2)
-            {
-                while (FirstSyncFlash == 0)
-                {
-                    DoIteration(n);
-                    n++;
-                }
-            }                        
+                DoIteration(n);
+                n++;
+            }        
         }
 
         private void DoIteration(int n)
         {
             int flashesBeforeIteration = NoOfFlashes;
-            var nines = new List<(int x, int y)>();
+            var hasFlashed = new List<(int x, int y)>();
             for (int y = 0; y <= _ymax; y++)
             {
                 for (int x = 0; x <= _xmax; x++)
                 {
                     var pos = (x, y);
-                    if (_octo[pos] == 9)
+                    if (_octo[pos] == ReadyToFlash)
                     {
-                        Flash(pos, nines);
+                        Flash(pos, hasFlashed);
                     }
                     else
                     {
@@ -74,10 +67,10 @@ namespace AOC11
                 }
             }
 
-            while (nines.Count > 0)
+            while (hasFlashed.Count > 0)
             {
-                IncAdj(nines[0], nines);
-                nines.RemoveAt(0);
+                IncreaseAdjectant(hasFlashed[0], hasFlashed);
+                hasFlashed.RemoveAt(0);
             }
 
             if (NoOfFlashes - flashesBeforeIteration == _octo.Count)
@@ -86,7 +79,7 @@ namespace AOC11
             }
         }
 
-        private void IncAdj((int x, int y) center, List<(int x, int y)> nines)
+        private void IncreaseAdjectant((int x, int y) center, List<(int x, int y)> hasFlashed)
         {
             for (int x = center.x - 1; x <= center.x + 1; x++)
             {
@@ -95,11 +88,11 @@ namespace AOC11
                 {
                     if (y < 0 || y > _ymax) continue;
                     var pos = (x, y);
-                    if (_octo[pos] == 9)
+                    if (_octo[pos] == ReadyToFlash)
                     {                        
-                        Flash(pos, nines);
+                        Flash(pos, hasFlashed);
                     }
-                    else if (_octo[pos] > 0)
+                    else if (_octo[pos] > ZeroEnergy)
                     {
                         _octo[pos]++;
                     }
@@ -107,11 +100,11 @@ namespace AOC11
             }
         }
 
-        private void Flash((int x, int y) pos, List<(int x, int y)> nines)
-        {
+        private void Flash((int x, int y) pos, List<(int x, int y)> hasFlashed)
+        {            
+            _octo[pos] = ZeroEnergy;
+            hasFlashed.Add(pos);
             NoOfFlashes++;
-            nines.Add(pos);
-            _octo[pos] = 0;
         }
 
     }
