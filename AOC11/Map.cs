@@ -64,12 +64,9 @@ namespace AOC11
             {
                 for (int x = 0; x <= _xmax; x++)
                 {
-                    //Increase((x,y), nines);
                     if (_octo[(x, y)] == 9)
                     {
-                        NoOfFlashes++;
-                        nines.Add((x, y));
-                        _octo[(x, y)] = 0;
+                        Flash((x, y), nines);
                     }
                     else
                     {
@@ -101,12 +98,9 @@ namespace AOC11
                 for (int y = pos.y - 1; y <= pos.y + 1; y++)
                 {
                     if (y < 0 || y > _ymax) continue;
-                    //Increase((x, y), nines);
                     if (_octo[(x, y)] == 9)
                     {
-                        NoOfFlashes++;
-                        nines.Add((x, y));
-                        _octo[(x, y)] = 0;
+                        Flash((x, y), nines);                       
                     }
                     else if (_octo[(x, y)] > 0)
                     {
@@ -116,19 +110,11 @@ namespace AOC11
             }
         }
 
-        private void Increase((int x, int y) pos, List<(int x, int y)> nines)
+        private void Flash((int x, int y) pos, List<(int x, int y)> nines)
         {
-            if (_octo[pos] == 9)
-            {
-                NoOfFlashes++;
-                nines.Add(pos);
-                _octo[pos] = 0;
-            }
-            else if (_octo[pos] > 0)
-            {
-                _octo[pos]++;
-            }
-
+            NoOfFlashes++;
+            nines.Add(pos);
+            _octo[pos] = 0;
         }
 
     }
