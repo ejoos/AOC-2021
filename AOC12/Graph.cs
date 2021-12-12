@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace AOC12
 {
-    class Graph
+    internal class Graph
     {     
         private readonly Dictionary<string, Node> _nodes = new();
      
@@ -42,8 +42,7 @@ namespace AOC12
         internal static List<Path> GetNewPaths(Node node)
         {
             List<Path> newPaths = new();
-            var p = new Path();
-            p.Add(node);            
+            var p = new Path(node);            
             newPaths.Add(p);
             return newPaths;
         }
@@ -65,8 +64,7 @@ namespace AOC12
                 }
                 foreach (var n in newNodes)
                 {
-                    var newPath = p.Copy();
-                    newPath.Add(n);
+                    var newPath = p.CopyAndAdd(n);                    
                     newPaths.Add(newPath);
                 }
             }

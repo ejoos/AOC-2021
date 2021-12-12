@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace AOC12
 {
-    class Node
+    internal class Node
     {
         internal bool Small { get; set; }
         internal string Code { get; set; }

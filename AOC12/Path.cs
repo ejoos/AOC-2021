@@ -3,10 +3,18 @@ using System.Linq;
 
 namespace AOC12
 {
-    class Path
+    internal class Path
     {
         private List<Node> Seq { get; set; } = new();
 
+        internal Path()
+        {            
+        }
+
+        internal Path(Node n)
+        {
+            Add(n);
+        }
 
         internal void Add(Node n)
         {
@@ -21,6 +29,13 @@ namespace AOC12
         internal bool Contains(Node n)
         {
             return Seq.Where(s => s.Code == n.Code).Any();
+        }
+
+        internal Path CopyAndAdd(Node node)
+        {
+            var newPath = Copy();
+            newPath.Add(node);
+            return newPath;
         }
 
         internal Path Copy()
