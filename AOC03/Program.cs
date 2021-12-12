@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace AOC3
+namespace AOC03
 {
     class Program
     {
@@ -15,7 +15,7 @@ namespace AOC3
         private static void Part1()
         {
             var bitColSum = new int[12];
-            var lines = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC3\1.txt");
+            var lines = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC03\1.txt");
 
             foreach (var line in lines)
             {
@@ -59,7 +59,7 @@ namespace AOC3
         private static void Part2()
         {
             int[] bitColSum;
-            var lines = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC3\1.txt");
+            var lines = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC03\1.txt");
             
             string[] oxygenLines = (string[])lines.Clone();
             for (var i = 0; i < 12; i++)

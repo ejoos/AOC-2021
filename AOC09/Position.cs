@@ -1,4 +1,4 @@
-﻿namespace AOC9
+﻿namespace AOC09
 {
     internal class Position
     {

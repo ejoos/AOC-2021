@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AOC9
+namespace AOC09
 {
     internal class Map
     {

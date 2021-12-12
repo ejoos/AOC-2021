@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AOC8
+namespace AOC08
 {
     internal class Resolver
     {

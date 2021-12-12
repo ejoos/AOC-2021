@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AOC4
+namespace AOC04
 {
     internal class Board
     {

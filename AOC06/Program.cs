@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace AOC6
+namespace AOC06
 {
     class Program
     {
@@ -16,7 +16,7 @@ namespace AOC6
         private static void Part1()
         {
             var numbers = new List<fish>();
-            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC6\1.txt");
+            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC06\1.txt");
             var numberData = lineData[0].Split(',', StringSplitOptions.RemoveEmptyEntries).ToList();
 
             foreach (var s in numberData)
@@ -53,7 +53,7 @@ namespace AOC6
         private static void Part2()
         {
             var originalPopulation = new List<fish>();
-            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC6\1.txt");
+            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC06\1.txt");
             var numberData = lineData[0].Split(',', StringSplitOptions.RemoveEmptyEntries).ToList();
             foreach (var s in numberData)
             {
@@ -107,7 +107,7 @@ namespace AOC6
         {
             var dayCounter = new long[]{0,0,0,0,0,0,0,0,0}.ToList();
             
-            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC6\1.txt");
+            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC06\1.txt");
             var numberData = lineData[0].Split(',', StringSplitOptions.RemoveEmptyEntries).ToList();
             foreach (var s in numberData)
             {

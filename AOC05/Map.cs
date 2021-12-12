@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AOC5
+namespace AOC05
 {
     internal class Map
     {

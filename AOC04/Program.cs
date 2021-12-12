@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace AOC4
+namespace AOC04
 {
     class Program
     {
@@ -13,8 +13,8 @@ namespace AOC4
 
         private static void Part1()
         {
-            var numbersData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC4\1_numbers.txt");
-            var boardsData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC4\1_boards.txt");
+            var numbersData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC04\1_numbers.txt");
+            var boardsData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC04\1_boards.txt");
 
             int[] numbers = Array.ConvertAll(numbersData[0].Split(',', StringSplitOptions.RemoveEmptyEntries), s => int.Parse(s));
             var boards = Board.CreateBoards(boardsData);            
@@ -39,8 +39,8 @@ namespace AOC4
 
         private static void Part2()
         {
-            var numbersData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC4\1_numbers.txt");
-            var boardsData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC4\1_boards.txt");
+            var numbersData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC04\1_numbers.txt");
+            var boardsData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC04\1_boards.txt");
 
             int[] numbers = Array.ConvertAll(numbersData[0].Split(',', StringSplitOptions.RemoveEmptyEntries), s => int.Parse(s));
             var boards = Board.CreateBoards(boardsData);            

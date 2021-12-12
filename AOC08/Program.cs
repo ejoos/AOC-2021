@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace AOC8
+namespace AOC08
 {
     class Program
     {
@@ -16,7 +16,7 @@ namespace AOC8
         private static void Part1()
         {
             List<int> positions = new List<int>();
-            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC8\1.txt").ToList();
+            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC08\1.txt").ToList();
             Dictionary<string, string> messages = new Dictionary<string, string>();
             foreach (var l in lineData)
             {
@@ -47,7 +47,7 @@ namespace AOC8
 
         private static void Part2()
         {            
-            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC8\1.txt").ToList();
+            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC08\1.txt").ToList();
             var answer = 0;
             foreach (var l in lineData)
             {

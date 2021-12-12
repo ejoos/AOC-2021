@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AOC6
+namespace AOC06
 {
     internal class Batch
     {

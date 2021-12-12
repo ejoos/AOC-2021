@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace AOC9
+namespace AOC09
 {
     class Program
     {
@@ -15,7 +15,7 @@ namespace AOC9
 
         private static void Part1()
         {            
-            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC9\1.txt").ToList();
+            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC09\1.txt").ToList();
             var map = Parse(lineData);
             int answer = Solve(map);
             Console.WriteLine(answer);
@@ -57,7 +57,7 @@ namespace AOC9
 
         private static void Part2()
         {
-            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC9\1.txt").ToList();
+            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC09\1.txt").ToList();
 
             Map map = new Map(lineData);            
             var answer = map.GetTop3Sum();

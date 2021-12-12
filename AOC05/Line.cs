@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AOC5
+namespace AOC05
 {
     internal class Line
     {

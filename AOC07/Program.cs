@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace AOC7
+namespace AOC07
 {
     class Program
     {
@@ -16,7 +16,7 @@ namespace AOC7
         private static void Part1()
         {
             List<int> positions = new List<int>();
-            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC7\1.txt").ToList();
+            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC07\1.txt").ToList();
             foreach (var l in lineData)
             {
                 var pos= l.Split(',').ToList();
@@ -41,7 +41,7 @@ namespace AOC7
         private static void Part2()
         {
             List<int> positions = new List<int>();
-            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC7\1.txt").ToList();
+            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC07\1.txt").ToList();
             foreach (var l in lineData)
             {
                 var pos = l.Split(',').ToList();
@@ -71,12 +71,12 @@ namespace AOC7
             int fuel = 0;
             foreach (var p in positions)
             {
-                fuel += sum(p, target);
+                fuel += Sum(p, target);
             }
             return fuel;
         }
 
-        private static int sum(int start, int target)
+        private static int Sum(int start, int target)
         {
             var s = 0;
             var diff = Math.Abs(start - target);

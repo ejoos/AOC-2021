@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace AOC2
+namespace AOC02
 {
     class Program
     {
@@ -17,7 +17,7 @@ namespace AOC2
             int depth = 0;
             int length = 0;
 
-            var lines = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC2\1.txt");
+            var lines = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC02\1.txt");
 
             foreach (var i in lines)
             {
@@ -48,7 +48,7 @@ namespace AOC2
             int depth = 0;
             int length = 0;
 
-            var lines = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC2\1.txt");
+            var lines = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC02\1.txt");
 
             foreach (var i in lines)
             {
