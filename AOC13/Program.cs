@@ -14,16 +14,19 @@ namespace AOC13
 
         private static void Part1()
         {
-            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC13\ex.txt").ToList();
-
-            Console.WriteLine(0);
+            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC13\1.txt").ToList();
+            var map = new Map();
+            var answer = map.Solve1(lineData);
+            Console.WriteLine(answer);
         }
 
         private static void Part2()
         {
-            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC13\ex.txt").ToList();
-
-            Console.WriteLine(0);
+            var lineData = File.ReadAllLines(@"C:\AdventOfCode\AOC\AOC13\1.txt").ToList();
+            var map = new Map();
+            var answer = map.Solve2(lineData);
+            File.WriteAllText(@"C:\temp\AOC13.txt", answer);
+            Console.WriteLine(answer);
         }
 
     }
