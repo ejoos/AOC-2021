@@ -1,54 +1,35 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AOC15
 {
     internal class Node
-    {
-        internal bool Small { get; set; }
-        internal int X { get; set; }
-        internal int Y { get; set; }
+    {                
+        internal (int x, int y) Pos { get; private set; }
         internal int Cost { get; set; }
-        private readonly List<Link> Connections = new();
-        
-        internal Node(int cost)
+        internal List<Link> Connections { get; private set; } = new();
+        internal Node BackTrack { get; set; }
+        internal bool Border { get; set; } = false;
+        internal bool Solved { get; set; } = false;
+
+        internal Node((int x, int y) pos)
         {
-            Cost = cost;            
+            Pos = pos;            
+            Cost = 0;
         }
- 
-        internal void AddConnection(Link link)
+
+        internal void AddConnection(Node to, int cost)
         {
-            Connections.Add(link);
+            var l = new Link(this, to, cost);
+            Connections.Add(l);
         }
 
-        //internal List<Node> GetConnNodes(Path p)
-        //{
-        //    List<Node> connNodes = new();
-        //    if (Code != "end")
-        //    {
-        //        //If...
-        //        //1: The To node is not small (big nodes are always ok) OR
-        //        //2: The path doesn´t already contain To node (small and big nodes are always ok if not already in the path) 
-        //        //..Then its ok
-        //        Connections.Where(l => !l.To.Small || !p.Contains(l.To)).ToList().ForEach(l => connNodes.Add(l.To));
-        //    }
-        //    return connNodes;
-        //}
-
-        //internal List<Node> GetConnNodes2(Path p)
-        //{
-        //    List<Node> connNodes = new();
-        //    if (Code != "end")
-        //    {
-        //        //If...
-        //        //1: The To node is not small (big nodes are always ok) OR
-        //        //2: The path doesn´t already contain To node (small and big nodes are always ok if not already in the path) OR
-        //        //3: The path doesn´t contain any small nodes that is visited twice (ok to add small node again)
-        //        //..Then its ok IF the To node isn´t the start node. 
-        //        Connections.Where(l => (!l.To.Small || !p.Contains(l.To) || p.NotContainsDoubleVisitedSmall()) && l.To.Code != "start").ToList().ForEach(l => connNodes.Add(l.To));
-        //    }            
-        //    return connNodes;
-        //}
-
+        internal void Reset()
+        {            
+            Cost = 0;
+            BackTrack = null;
+            Solved = Border = false;
+        }
     }
 }
