@@ -9,7 +9,7 @@ namespace AOC15
         static void Main(string[] args)
         {
             Part1();
-            Part2();
+            Part2();            
         }
 
         private static void Part1()

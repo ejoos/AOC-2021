@@ -107,16 +107,18 @@ namespace AOC15
                 {
                     //Already found best route
                     if (l.To.Solved) continue;
-
-                    //Check if new best route to the border node is found
-                    //Doesn´t happen in this case with a square graph with all connections, but anyway..
+                    
                     if (l.To.Border) 
                     {
-                        if (l.To.Cost > solvedNode.Cost + l.Cost)
-                        {
-                            l.To.Cost = solvedNode.Cost + l.Cost;
-                            l.To.BackTrack = l.From;
-                        }
+                        //Check if new best route to the border node is found
+                        //Doesn´t happen in this case with a square graph with all connections.
+                        //if (l.To.Cost > solvedNode.Cost + l.Cost)
+                        //{
+                        //    l.To.Cost = solvedNode.Cost + l.Cost;
+                        //    l.To.BackTrack = l.From;
+                        //    //Resort border
+                        //    TODO
+                        //}
                         continue;
                     }
 
@@ -129,6 +131,7 @@ namespace AOC15
             }
             return solvedNode?.Cost;
         }
+
     }
 
     internal class NodeSorter : IComparer<int>
