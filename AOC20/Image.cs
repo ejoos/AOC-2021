@@ -10,13 +10,11 @@ namespace AOC20
         private int _ymax;
         private Dictionary<(int x, int y), bool> _pixels = new();
         private List<bool> _key = new();
-        private bool _switchInfinity;
         private bool _infinityValue;
-
+        
         internal void Parse(List<string> lineData)
         {
-            lineData[0].ToCharArray().ToList().ForEach(c => _key.Add(c == '#'));
-            _switchInfinity = _key[0];
+            lineData[0].ToCharArray().ToList().ForEach(c => _key.Add(c == '#'));         
             lineData.RemoveRange(0, 2);
 
             _ymax = _xmax = lineData.Count - 1;
@@ -47,10 +45,29 @@ namespace AOC20
                     }
                 }
                 _pixels = _newPixels;                
-                _infinityValue = _switchInfinity && !_infinityValue;
+                _infinityValue = SwitchInfinity(e) && !_infinityValue;
             }
             return _pixels.Where(p => p.Value).Count();
         }
+
+        /// <summary>
+        /// The value of the infinite pixels should shift:
+        /// 1. If it is the first iteration and first position in the key is true
+        /// 2. If it is a iteration after the first, the first position in the key is true, and the last is false
+        /// </summary>
+        /// <param name="iteration"></param>
+        /// <returns></returns>
+        private bool SwitchInfinity(int iteration)
+        {
+            if (iteration == 0)
+            {
+                return _key.First();
+            }
+            else
+            {
+                return _key.First() && !_key.Last();
+            }
+        }  
 
         private void AddBorder(bool bValue)
         {
